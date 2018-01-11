@@ -5,26 +5,12 @@
 
 	<groupId>es.dmunozfer</groupId>
 	<artifactId>tutorial-jenkins-2</artifactId>
-	<version>1.0.1</version>
-	<packaging>war</packaging>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 
 	<name>Tutorial Jenkins 2</name>
 	<description>Aplicación de ejemplo para el tutorial de Jenkins 2</description>
 
-    <repositories>
-		<repository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</repository>
-	</repositories>
-    
-    <pluginRepositories>
-		<pluginRepository>
-			<id>repo.jenkins-ci.org</id>
-			<url>https://repo.jenkins-ci.org/public/</url>
-		</pluginRepository>
-	</pluginRepositories>
-    
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -35,7 +21,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-        <maven-hpi-plugin.version>1.95</maven-hpi-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -49,63 +34,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        
-        <dependency>
-			<groupId>com.kiuwan</groupId>
-			<artifactId>java-api-client</artifactId>
-			<version>0.0.9</version>
-		</dependency>
-        
-		<dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>ant</artifactId>
-			<version>1.7.1</version>
-		</dependency>
 	</dependencies>
 	
 	<build>
-        <extensions>
-			<!-- Extension required to deploy a snapshot or a release to the CloudBees 
-				remote maven repository using Webdav -->
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-            <plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<goals>deploy</goals>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 	
-    <distributionManagement>
-		<repository>
-			<id>maven.jenkins-ci.org</id>
-			<name>jenkinsci-releases</name>
-			<url>https://repo.jenkins-ci.org/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>maven.jenkins-ci.org</id>
-			<name>jenkinsci-snapshots</name>
-			<url>https://repo.jenkins-ci.org/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 </project>
