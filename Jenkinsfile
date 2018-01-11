@@ -26,12 +26,12 @@ node {
    // -- ETAPA: Análisis
    // ------------------------------------
    stage'Code Analysis'
-   sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
+   sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
   
 
     
     stage'Archive App' 
-    sh '${mvnCmd} deploy -DskipTests=true -P nexus3'
+    sh 'mvn deploy -DskipTests=true -P nexus3'
     
 
    // ------------------------------------
