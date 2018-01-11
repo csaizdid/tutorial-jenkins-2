@@ -31,7 +31,7 @@ node {
 
     
     stage'Archive App' 
-    sh 'mvn deploy -DskipTests=true -P nexus3'
+    sh 'mvn deploy -DaltDeploymentRepository=releaseRepository::default::http://nexus-cicd.192.168.1.147.nip.io -DskipTests=true -P nexus3'
     
 
    // ------------------------------------
