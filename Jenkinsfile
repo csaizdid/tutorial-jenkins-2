@@ -26,21 +26,17 @@ node {
    // -- ETAPA: Análisis
    // ------------------------------------
    stage'Code Analysis'
-      steps {
-        script {
-          if (env.WITH_SONAR.toBoolean()) {
-            sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
-          } else {
-            sh "${mvnCmd} site -DskipTests=true"
-            
-            step([$class: 'CheckStylePublisher', unstableTotalAll:'300'])
-            step([$class: 'PmdPublisher', unstableTotalAll:'20'])
-            step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml', unstableTotalAll:'20'])
-            step([$class: 'JacocoPublisher'])
-            publishHTML (target: [keepAll: true, reportDir: 'target/site', reportFiles: 'project-info.html', reportName: "Site Report"])
-          }
-        }
-      }
+  if (env.WITH_SONAR.toBoolean()) {
+    sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
+  } else {
+    sh "${mvnCmd} site -DskipTests=true" 
+    step([$class: 'CheckStylePublisher', unstableTotalAll:'300'])
+    step([$class: 'PmdPublisher', unstableTotalAll:'20'])
+    step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml', unstableTotalAll:'20'])
+    step([$class: 'JacocoPublisher'])
+    publishHTML (target: [keepAll: true, reportDir: 'target/site', reportFiles: 'project-info.html', reportName: "Site Report"])
+  }  
+
     
     stage'Archive App' 
       sh '${mvnCmd} deploy -DskipTests=true -P nexus3'
