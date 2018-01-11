@@ -35,6 +35,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+        <maven-hpi-plugin.version>1.95</maven-hpi-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -61,12 +62,6 @@
 			<version>1.7.1</version>
 		</dependency>
 	</dependencies>
-    
-    <properties>
-		<!-- explicitly specifying the latest version here because one we get from 
-			the parent POM tends to lag behind a bit -->
-		<maven-hpi-plugin.version>1.95</maven-hpi-plugin.version>
-	</properties>
 	
 	<build>
         <extensions>
