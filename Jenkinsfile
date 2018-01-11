@@ -25,7 +25,7 @@ node {
    // ------------------------------------
    // -- ETAPA: Análisis
    // ------------------------------------
-   stage('Code Analysis') {
+   stage'Code Analysis'
       steps {
         script {
           if (env.WITH_SONAR.toBoolean()) {
@@ -41,12 +41,10 @@ node {
           }
         }
       }
-    }
-    stage('Archive App') {
-      steps {
-        sh "${mvnCmd} deploy -DskipTests=true -P nexus3"
-      }
-    }
+    
+    stage'Archive App' 
+      sh '${mvnCmd} deploy -DskipTests=true -P nexus3'
+    
 
    // ------------------------------------
    // -- ETAPA: Test
