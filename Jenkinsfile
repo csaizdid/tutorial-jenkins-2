@@ -1,4 +1,4 @@
-#!groovy
+﻿#!groovy
 
 node {
    // ------------------------------------
@@ -21,7 +21,14 @@ node {
    // -- Compilando
    echo 'Compilando aplicación'
    sh 'mvn clean compile'
-   
+
+   // ------------------------------------
+   // -- ETAPA: Análisis
+   // ------------------------------------
+   stage 'Analisis'
+   echo 'Analizando con Kiuwan'
+   sh 'mvn hpi:run'
+
    // ------------------------------------
    // -- ETAPA: Test
    // ------------------------------------
